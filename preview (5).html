@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayesha | Best Friend Forever ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ overflow:hidden;min-height:100vh;color:white;
+ font-family:Georgia,serif;
+ background:radial-gradient(ellipse at center,#541333,#21091f 55%,#070510);
+}
+#stars,#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.star{
+ position:absolute;width:3px;height:3px;background:#fff;
+ border-radius:50%;box-shadow:0 0 12px #ffd68b;
+ animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.1;transform:scale(.2)}}
+#intro,.scene{
+ position:fixed;inset:0;display:flex;align-items:center;
+ justify-content:center;text-align:center;padding:20px;
+ transition:opacity 1.2s ease;
+}
+#intro{z-index:5}
+.content{max-width:850px;width:100%}
+.crown{font-size:65px;filter:drop-shadow(0 0 20px gold);animation:float 3s infinite}
+h1{
+ font-size:clamp(38px,8vw,82px);
+ color:#ffe5a5;text-shadow:0 0 25px #ffb83e,0 0 55px #b56b25;
+ margin:15px 0;
+}
+.subtitle{letter-spacing:5px;color:#ffc9df;font-size:12px}
+.question{font-size:clamp(21px,4vw,34px);margin:35px 0}
+.buttons{display:flex;justify-content:center;gap:22px}
+button{
+ border:1px solid #ffe2a5;border-radius:50px;padding:15px 35px;
+ font-size:18px;cursor:pointer;transition:.2s;
+}
+#yes{
+ background:linear-gradient(135deg,#fff0b7,#d99a36);
+ color:#39102b;box-shadow:0 0 30px #ffc45b;
+}
+#no{background:#47142f;color:white}
+.hint{margin-top:25px;color:#f3bdd6;font-size:13px}
+.scene{opacity:0;visibility:hidden;z-index:3;flex-direction:column}
+.scene.show{opacity:1;visibility:visible}
+.scene h2{
+ font-size:clamp(30px,7vw,65px);color:#ffe2a3;
+ text-shadow:0 0 25px #ffb63d;margin:15px;
+}
+.scene p{font-size:clamp(16px,3vw,23px);color:#ffd5e5;letter-spacing:2px}
+.bigEmoji{
+ font-size:clamp(75px,17vw,155px);
+ filter:drop-shadow(0 0 25px #ff7cac);
+ animation:float 2.5s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-17px)}}
+.glow{animation:glow 2s infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 0 45px #ff8dbd)}}
+#rose{width:min(70vw,330px);height:390px;overflow:visible}
+.petals{transform-origin:150px 135px;animation:bloom 3s ease-out forwards}
+@keyframes bloom{from{transform:scale(.05) rotate(-25deg)}to{transform:scale(1) rotate(0)}}
+#heartSvg{width:min(80vw,600px);height:min(80vw,600px);animation:heartbeat 1.2s infinite;filter:drop-shadow(0 0 35px #ff3388)}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+.finalName{
+ position:absolute;z-index:5;top:50%;left:50%;
+ transform:translate(-50%,-50%);
+ color:#fff0b8;font-size:clamp(38px,10vw,100px);
+ font-weight:bold;letter-spacing:4px;white-space:nowrap;
+ text-shadow:0 0 12px white,0 0 35px #ffb42f,0 0 70px #ff4f9d;
+ animation:nameGlow 2s infinite alternate;
+}
+@keyframes nameGlow{to{filter:brightness(1.5);transform:translate(-50%,-50%) scale(1.07)}}
+.finalMessage{
+ position:absolute;bottom:9%;font-size:clamp(15px,3vw,24px);
+ color:#ffe0a9;letter-spacing:4px;text-shadow:0 0 20px #ff80bd;
+}
+.flying{
+ position:fixed;z-index:8;pointer-events:none;
+ animation:fly var(--d) cubic-bezier(.1,.7,.2,1) forwards;
+}
+@keyframes fly{
+ 0%{transform:translate(0,0) scale(.2) rotate(0);opacity:1}
+ 100%{transform:translate(var(--x),var(--y)) scale(var(--s)) rotate(var(--r));opacity:0}
+}
+.ring{
+ position:fixed;z-index:7;left:50%;top:50%;width:10px;height:10px;
+ border:4px solid #ffd4e7;border-radius:50%;
+ transform:translate(-50%,-50%);
+ animation:ring 2s ease-out forwards;pointer-events:none;
+}
+@keyframes ring{to{width:160vmax;height:160vmax;opacity:0;border-width:1px}}
+#flash{position:fixed;inset:0;background:white;opacity:0;z-index:10;pointer-events:none}
+#progress{
+ position:fixed;bottom:0;left:0;width:0;height:4px;
+ background:linear-gradient(90deg,#ff76b3,#ffe5a5);
+ box-shadow:0 0 15px #ffd27d;z-index:20;
+}
+.layerNumber{
+ position:absolute;top:7%;font-size:12px;letter-spacing:5px;
+ color:#f8c3d9;opacity:.8;
+}
+.gift{
+ font-size:120px;animation:gift 1.4s infinite alternate;
+ filter:drop-shadow(0 0 25px gold);
+}
+@keyframes gift{to{transform:scale(1.15) rotate(5deg)}}
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+<div id="fx"></div>
+<div id="flash"></div>
+<div id="progress"></div>
+
+<div id="intro">
+ <div class="content">
+  <div class="crown">👑</div>
+  <h1>A Special Surprise</h1>
+  <div class="subtitle">A MAGICAL MOMENT FOR SOMEONE SPECIAL</div>
+  <div class="question">Will you accept my surprise? 💖</div>
+  <div class="buttons">
+   <button id="yes">YES 💗</button>
+   <button id="no">NO 🙈</button>
+  </div>
+  <div class="hint">Try clicking NO if you can 😉</div>
+ </div>
+</div>
+
+<!-- LAYER 1 -->
+<section class="scene" id="s1">
+ <div class="layerNumber">MAGICAL MOMENT 01 / 10</div>
+ <div class="bigEmoji">✨</div>
+ <h2>Something Magical Begins</h2>
+ <p>A little surprise made with love 💖</p>
+</section>
+
+<!-- LAYER 2 -->
+<section class="scene" id="s2">
+ <div class="layerNumber">MAGICAL MOMENT 02 / 10</div>
+ <svg id="rose" viewBox="0 0 300 400">
+  <defs>
+   <linearGradient id="petal" x2="1" y2="1">
+    <stop stop-color="#ffc0dc"/><stop offset=".5" stop-color="#f52b77"/>
+    <stop offset="1" stop-color="#750d42"/>
+   </linearGradient>
+   <linearGradient id="leaf" x2="1" y2="1">
+    <stop stop-color="#baff9b"/><stop offset="1" stop-color="#08733e"/>
+   </linearGradient>
+  </defs>
+  <path d="M150 150 Q155 270 150 385" stroke="#39a968" stroke-width="9" fill="none"/>
+  <path d="M150 280 Q65 220 65 280 Q95 330 150 280" fill="url(#leaf)"/>
+  <path d="M150 325 Q225 240 235 300 Q210 350 150 325" fill="url(#leaf)"/>
+  <g class="petals">
+   <ellipse cx="150" cy="115" rx="35" ry="65" fill="url(#petal)"/>
+   <ellipse cx="110" cy="130" rx="35" ry="60" transform="rotate(-45 110 130)" fill="#f94389"/>
+   <ellipse cx="190" cy="130" rx="35" ry="60" transform="rotate(45 190 130)" fill="#d71962"/>
+   <ellipse cx="120" cy="90" rx="30" ry="55" transform="rotate(-35 120 90)" fill="#ff8db8"/>
+   <ellipse cx="180" cy="90" rx="30" ry="55" transform="rotate(35 180 90)" fill="#ff639c"/>
+   <ellipse cx="150" cy="85" rx="25" ry="45" fill="#ffbad4"/>
+   <circle cx="150" cy="130" r="17" fill="#ffdc84"/>
+  </g>
+ </svg>
+ <h2>A Rose For You 🌹</h2>
+ <p>Because you deserve something beautiful</p>
+</section>
+
+<!-- LAYER 3 -->
+<section class="scene" id="s3">
+ <div class="layerNumber">MAGICAL MOMENT 03 / 10</div>
+ <div class="bigEmoji">🦋🌸🦋</div>
+ <h2>Butterflies Of Happiness</h2>
+ <p>May your life always bloom with happiness</p>
+</section>
+
+<!-- LAYER 4 -->
+<section class="scene" id="s4">
+ <div class="layerNumber">MAGICAL MOMENT 04 / 10</div>
+ <div class="bigEmoji">🌟✨⭐✨🌟</div>
+ <h2>Your Own Universe</h2>
+ <p>Every star shines a little brighter for you</p>
+</section>
+
+<!-- LAYER 5 -->
+<section class="scene" id="s5">
+ <div class="layerNumber">MAGICAL MOMENT 05 / 10</div>
+ <div class="bigEmoji">💗💖💕💘</div>
+ <h2>Sending You A Million Hearts</h2>
+ <p>One for every beautiful memory</p>
+</section>
+
+<!-- LAYER 6 -->
+<section class="scene" id="s6">
+ <div class="layerNumber">MAGICAL MOMENT 06 / 10</div>
+ <div class="gift">🎁</div>
+ <h2>A Little Secret Gift</h2>
+ <p>Inside this gift is a very special message</p>
+</section>
+
+<!-- LAYER 7 -->
+<section class="scene" id="s7">
+ <div class="layerNumber">MAGICAL MOMENT 07 / 10</div>
+ <div class="bigEmoji">🌈🦄🌈</div>
+ <h2>Colour Your World</h2>
+ <p>May every day bring you new reasons to smile</p>
+</section>
+
+<!-- LAYER 8 -->
+<section class="scene" id="s8">
+ <div class="layerNumber">MAGICAL MOMENT 08 / 10</div>
+ <svg id="heartSvg" viewBox="0 0 512 512">
+  <defs>
+   <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#ffb2d0"/><stop offset=".45" stop-color="#fa277b"/>
+    <stop offset="1" stop-color="#780b4b"/>
+   </linearGradient>
+  </defs>
+  <path d="M256 465 C220 420 30 290 30 155 C30 35 185 10 256 120 C327 10 482 35 482 155 C482 290 292 420 256 465Z" fill="url(#heartGrad)" stroke="#ffd4e7" stroke-width="5"/>
+  <path d="M95 150 Q110 65 190 85" fill="none" stroke="white" stroke-width="10" opacity=".35" stroke-linecap="round"/>
+ </svg>
+ <h2>A Heart Full Of Friendship ❤️</h2>
+ <p>Some friendships are truly priceless</p>
+</section>
+
+<!-- LAYER 9 -->
+<section class="scene" id="s9">
+ <div class="layerNumber">MAGICAL MOMENT 09 / 10</div>
+ <div class="bigEmoji">💥🌹💖✨🎉</div>
+ <h2>A Mega Surprise!</h2>
+ <p>Get ready for the biggest magical explosion</p>
+</section>
+
+<!-- LAYER 10 -->
+<section class="scene" id="s10">
+ <div class="layerNumber">THE FINAL MOMENT 10 / 10</div>
+ <svg id="heartSvg" viewBox="0 0 512 512" style="position:absolute">
+  <defs>
+   <linearGradient id="finalHeart" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#ffb6d4"/><stop offset=".5" stop-color="#f51d77"/>
+    <stop offset="1" stop-color="#720b48"/>
+   </linearGradient>
+  </defs>
+  <path d="M256 465 C220 420 30 290 30 155 C30 35 185 10 256 120 C327 10 482 35 482 155 C482 290 292 420 256 465Z" fill="url(#finalHeart)" stroke="#ffe2a5" stroke-width="5"/>
+  <path d="M95 150 Q110 65 190 85" fill="none" stroke="white" stroke-width="10" opacity=".4" stroke-linecap="round"/>
+ </svg>
+ <div class="finalName">AYESHA</div>
+ <div class="finalMessage">👑 MY BEST FRIEND FOREVER 👑<br>❤️ YOU ARE ONE OF A KIND ❤️</div>
+</section>
+
+<script>
+const $=id=>document.getElementById(id);
+const starBox=$('stars');
+for(let i=0;i<130;i++){
+ let s=document.createElement('i');s.className='star';
+ s.style.left=Math.random()*100+'%';
+ s.style.top=Math.random()*100+'%';
+ s.style.animationDelay=Math.random()*3+'s';
+ starBox.appendChild(s);
+}
+
+// NO button runs away
+const no=$('no');
+function moveNo(){
+ const pad=70;
+ const x=pad+Math.random()*(innerWidth-pad*2);
+ const y=pad+Math.random()*(innerHeight-pad*2);
+ no.style.position='fixed';
+ no.style.left=x+'px';
+ no.style.top=y+'px';
+ no.style.transform='translate(-50%,-50%)';
+}
+no.addEventListener('mouseenter',moveNo);
+no.addEventListener('touchstart',e=>{e.preventDefault();moveNo()});
+no.addEventListener('click',moveNo);
+
+// Original generated melody
+let audio;
+function startMusic(){
+ try{
+  audio=new(window.AudioContext||window.webkitAudioContext)();
+  const melody=[392,440,523,494,440,392,330,392,440,523,587,523,440,392];
+  function play(){
+   if(!audio)return;
+   let start=audio.currentTime;
+   melody.forEach((n,i)=>{
+    let o=audio.createOscillator(),g=audio.createGain();
+    o.type='sine';o.frequency.value=n;
+    let t=start+i*.48;
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(.045,t+.08);
+    g.gain.exponentialRampToValueAtTime(.0001,t+.43);
+    o.connect(g);g.connect(audio.destination);
+    o.start(t);o.stop(t+.46);
+   });
+  }
+  play();
+  setInterval(play,melody.length*.48*1000+300);
+ }catch(e){}
+}
+
+// Flying emoji and flower effects
+const emojis=['❤️','💖','💗','💘','🌹','🌸','🌺','🌷','💐','✨','⭐','🦋','💕','💝','🥰','😍','👑','🎉','🌈'];
+function burst(count){
+ for(let i=0;i<count;i++){
+  let p=document.createElement('div');
+  p.className='flying';
+  p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  p.style.left='50%';p.style.top='50%';
+  p.style.fontSize=(18+Math.random()*38)+'px';
+  p.style.setProperty('--x',(Math.random()-.5)*innerWidth*1.9+'px');
+  p.style.setProperty('--y',(Math.random()-.5)*innerHeight*1.9+'px');
+  p.style.setProperty('--s',.7+Math.random()*2);
+  p.style.setProperty('--r',(Math.random()*1000-500)+'deg');
+  p.style.setProperty('--d',(2+Math.random()*3)+'s');
+  $('fx').appendChild(p);
+  setTimeout(()=>p.remove(),5500);
+ }
+}
+function blast(amount=150){
+ let ring=document.createElement('div');ring.className='ring';
+ document.body.appendChild(ring);
+ setTimeout(()=>ring.remove(),2100);
+ $('flash').animate([{opacity:0},{opacity:.85},{opacity:0}],{duration:850});
+ burst(amount);
+}
+
+// Layer show and progress
+const scenes=Array.from({length:10},(_,i)=>$('s'+(i+1)));
+function showLayer(index){
+ scenes.forEach((s,i)=>s.classList.toggle('show',i===index));
+ $('progress').style.width=((index+1)*10)+'%';
+ if(index===1)burst(35);
+ if(index===2)burst(45);
+ if(index===3)burst(65);
+ if(index===4)burst(80);
+ if(index===5)burst(45);
+ if(index===6)burst(65);
+ if(index===7)blast(120);
+ if(index===8)blast(250);
+ if(index===9){
+  blast(350);
+  setTimeout(()=>blast(250),1300);
+  setTimeout(()=>blast(200),2700);
+ }
+}
+$('yes').addEventListener('click',()=>{
+ $('yes').disabled=true;
+ startMusic();
+ $('intro').style.opacity='0';
+ setTimeout(()=>$('intro').style.display='none',1200);
+ let index=0;
+ showLayer(index);
+ const duration=4300;
+ let timer=setInterval(()=>{
+  index++;
+  if(index>=10){clearInterval(timer);return}
+  showLayer(index);
+ },duration);
+});
+</script>
+</body>
+</html>
